@@ -78,14 +78,14 @@ $(document).ready(function() {
   $(function(){
   jQuery(document).ready(function() {
     $('#home').backstretch([
-      "images/doctornew1.jpg", 
-      "images/doctornew2.png",
+      "images/DoutorBackground1.jpg", 
+      "images/DoutorBackground2.jpg",
     ],  {duration: 2000, fade: 750});
 
      // Garante que o backstretch tenha z-index 1
     $('#home .backstretch, #home .backstretch img').css({
       'z-index': 0,
-      'position': 'absolute'
+      'position': 'absolute',
     });
 
     // Adiciona overlay escuro sobre as imagens do slider
