@@ -110,21 +110,6 @@ $(document).ready(function() {
     });
   });
 
-  const owl = $('#owl-antes-depois').owlCarousel({
-  items: 1,
-  loop: true,
-  autoplay: true,
-});
-
-// Controle manual das setas personalizadas
-$('.owl-prev-custom').click(function () {
-  owl.trigger('prev.owl.carousel');
-});
-$('.owl-next-custom').click(function () {
-  owl.trigger('next.owl.carousel');
-});
-
-
 
   /* wow
   -------------------------------*/
