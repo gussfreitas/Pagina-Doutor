@@ -330,126 +330,74 @@ a {
 }
 
 /*---------------------------------------
-   Trainer section              
+   ESPECIALIDADES section              
 -----------------------------------------*/
+/* Section especialidades fundo branco */
 #trainer {
-  background: #f9f9f9;
+    background-color: #fff !important;
+    padding: 80px 0;
 }
 
 #trainer h2 {
-  color: #000000;
+    color: #084D6E;
+    margin-bottom: 50px;
+    font-size: 32px;
+    font-weight: 600;
+    font-family: Poppins, sans-serif;
+    
+
 }
 
-#trainer p {
-  color: #000000;
+/* Cards simples */
+.simple-card {
+    background-color: #084D6E; /* Azul petróleo */
+    border-radius: 10px;
+    padding: 30px 20px;
+    text-align: center;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-#trainer h3 {
-  letter-spacing: 1px;
-  margin-top: 0px;
-  padding-bottom: 12px;
+.simple-card:hover {
+    transform: translateY(-5px);
 }
 
-#trainer img {
-  box-shadow: 0px 2px 8px 10px rgba(50, 50, 50, 0.10);
-  width: 100%;
+.simple-card h4 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
-#trainer .trainer-thumb {
-  position: relative;
-  margin-top: 72px;
-  margin-bottom: 32px;
-  padding: 0px;
+.simple-card p {
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
 }
 
-
-#trainer .trainer-thumb .trainer-overlay {
-  background: #26253a;
-  color: #ffffff;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  vertical-align: middle;
-  opacity: 0;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  transition: all 0.4s ease-in-out;
-}
-
-#trainer .trainer-thumb:hover .trainer-overlay {
-  opacity: 0.9;
-  transform: scale(0.9);
-}
-
-#trainer .trainer-thumb .trainer-overlay h2 {
-  padding-bottom: 0px;
-}
-
-#trainer .trainer-thumb .trainer-des {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform:translate(-50%,-50%);
-      -ms-transform:translate(-50%,-50%);
-          transform:translate(-50%,-50%);
+/* Responsividade */
+@media (max-width: 768px) {
+    .simple-card {
+        margin-bottom: 20px;
+        padding: 25px 15px;
+        min-height: 140px;
+    }
+    
+    .simple-card h4 {
+        font-size: 18px;
+    }
+    
+    .simple-card p {
+        font-size: 13px;
+    }
 }
 
 
-
-/*---------------------------------------
-   Newsletter section              
------------------------------------------*/
-#newsletter {
-    background: url('../images/newsletter-bg.jpg') 50% 0 repeat-y fixed;
-    background-size: cover;
-    background-position: center center;
-    color: #ffffff;
-    padding-top: 12rem;
-    padding-bottom: 12rem;
-}
-
-#newsletter .newsletter_detail {
-  padding-top: 3rem;
-}
-
-#newsletter .form-control {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #999;
-  border-radius: 0px;
-  box-shadow: none;
-  font-size: 20px;
-  margin-bottom: 16px;
-  transition: all 0.4s ease-in-out;
-}
-
-#newsletter .form-control:focus {
-  border-bottom-color: #ffffff;
-}
-
-#newsletter input {
-  height: 45px;
-}
-
-#newsletter input[type="submit"] {
-  background: #26253a;
-  border: none;
-  color: #ffffff;
-  font-size: 20px;
-  font-weight: bold;
-  letter-spacing: 4px;
-  height: 65px;
-  margin-top: 42px;
-  transition: all 0.4s ease-in-out;
-}
-
-#newsletter input[type="submit"]:hover {
-  background: #ffffff;
-  color: #26253a;
-}
 
 /*---------------------------------------
     Serviços section              
@@ -522,48 +470,289 @@ a {
 }
 
 /*---------------------------------------
-    Before - after section section              
+    CONTATO - MAPA section              
 -----------------------------------------*/
-.before-after-wrapper {
-  max-width: 600px;
-  margin: 0 auto;
+/* ===== SEÇÃO CONTATO-MAPA ===== */
+
+.contato-mapa {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
 }
 
-.before-after-card {
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-}
-
-.before-after-card img {
+.contato-mapa .formulario,
+.contato-mapa .mapa {
   width: 100%;
-  height: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.contato-mapa .mapa iframe {
+  width: 100%;
+  height: 400px;
   display: block;
-  transition: transform 0.4s ease;
-  transform-origin: center center;
-  will-change: transform;
+  border: none;
 }
 
-.before-after-card:hover img {
-  transform: scale(1.05);
+.formulario-box {
+  background:#084D6E  ;
+  padding: 60px 40px;
+  border-radius: 0;
+  max-width: 100%;
+  width: 100%;
+  color: white;
+  text-align: left;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
 }
 
-#antes-depois p, h2{
-  color: #ffffff;
+.formulario-box h3 {
+  text-align: center;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 20px;
+  letter-spacing: 6px;
+  padding-bottom: 18px;
+  color: #fff;
+  font-weight: 600;
+   font-family: 'Source Sans Pro', sans-serif;
 }
 
-#antes-depois .container {
-  padding-top: 3rem;
-  padding-bottom: -100rem;
+.form-linha .form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
+.form-linha .form-row label {
+  flex: 1;
+  font-weight: bold;
+  margin-right: 81px;
+  min-width: 200px;
+  color: white;
+  font-size: 1.7rem;
+}
 
+.form-linha .form-row input[type="text"],
+.form-linha .form-row input[type="email"] {
+  flex: 3;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 1rem;
+  color: black;
+}
+
+.checkbox-group {
+  font-size: 1.7rem;
+  margin: 20px 0;
+  flex-direction: row ; /* Mudado para coluna para alinhar à esquerda */
+  align-items: flex-start; /* Alinha à esquerda */
+}
+
+.checkbox-group label {
+  display: block;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.btn-formulario {
+  display: block;
+  margin: 0 auto;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 30px;
+  background: white;
+  color: #000;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-formulario:hover {
+  background: #f1f1f1;
+}
+
+.btn-formulario i {
+  color: #25d366;
+  margin-right: 8px;
+}
+
+/* Estilo geral do formulário */
+.formulario form {
+  padding: 20px;
+  background-color: #000;
+  color: #fff;
+}
+
+.formulario input,
+.formulario button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+/* Check box - Layout horizontal */
+.form-linha .form-row.checkbox-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.form-linha .form-row.checkbox-row label {
+    flex: none;
+    font-weight: bold;
+    margin-right: 20px;
+    min-width: 200px;
+    color: white;
+    font-size: 1.7rem;
+    margin-top: 5px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #ffffff;
+    cursor: pointer;
+    margin: 0;
+}
+
+.checkbox-item label {
+    font-size: 16px;
+    color: #ffffff !important;
+    cursor: pointer;
+    margin: 0;
+    user-select: none;
+    font-weight: normal !important;
+    min-width: auto !important;
+}
+
+.checkbox-item label:hover {
+    color: #f0f0f0 !important;
+}
+
+/* Responsividade MOBILE */
+@media (max-width: 768px) {
+    .formulario-box {
+        padding: 30px 20px;
+    }
+    
+    .formulario-box h3 {
+        font-size: 18px;
+        letter-spacing: 2px;
+        margin-bottom: 25px;
+    }
+    
+    .form-linha .form-row {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    
+    .form-linha .form-row label {
+        margin-bottom: 8px;
+        margin-right: 0;
+        min-width: auto;
+        font-size: 14px;
+        width: 100%;
+    }
+    
+    .form-linha .form-row input[type="text"],
+    .form-linha .form-row input[type="email"] {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+    
+    .form-linha .form-row.checkbox-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .form-linha .form-row.checkbox-row > label {
+        margin-bottom: 15px;
+        margin-right: 0;
+        min-width: auto;
+        font-size: 14px;
+        width: 100%;
+    }
+    
+    .checkbox-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        width: 100%;
+    }
+    
+    .checkbox-item {
+        gap: 10px;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    
+    .checkbox-item input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .checkbox-item label {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    
+    .btn-formulario {
+        width: 100%;
+        margin: 25px 0 0;
+        padding: 15px;
+        font-size: 14px;
+        min-width: auto;
+    }
+}
+
+/* Para telas muito pequenas */
+@media (max-width: 480px) {
+    .formulario-box {
+        padding: 20px 15px;
+    }
+    
+    .formulario-box h3 {
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+    
+    .checkbox-item label {
+        font-size: 13px;
+    }
+}
 /*---------------------------------------
     Testimonial section              
 -----------------------------------------*/
+
 #testimonial {
     background:#084D6E ;
-    color: #26253a;
+    color: #ffffff;
     padding-top: 0rem;
     padding-bottom: 0rem;
 }
@@ -584,7 +773,9 @@ a {
 
 .owl-pagination {
   padding-top: 3rem;
-  padding-bottom: 3rem
+  padding-bottom: 3rem;
+  display: flex;
+  justify-content: center;
 }
 
 /*---------------------------------------
@@ -595,6 +786,13 @@ footer {
   color: #ffffff;
   padding-top: 8rem;
   padding-bottom: 8rem;
+}
+
+footer h2 {
+  color: #ffffff;
+  font-size: 30px;
+  letter-spacing: 6px;
+  padding-bottom: 18px;
 }
 
 footer .col-md-5 {
@@ -632,6 +830,7 @@ footer .copyright-text {
     position: relative;
     padding: 0;
     margin: 0;
+   
 }
 
 .social-icon li {
