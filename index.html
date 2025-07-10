@@ -296,7 +296,7 @@
 
                 <div class="form-row">
                     <label for="telefone">Telefone:</label>
-                    <input type="text" id="telefone" name="telefone" required />
+                    <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required />
                 </div>
 
 				<div class="form-row">
@@ -406,18 +406,19 @@ $(document).ready(function(){
 });
 </script>
 
-<!-- ionformações do formulário para o número do whatsapp -->
+<!-- informações do formulário para o número do whatsapp -->
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('.form-linha');
     
     form.addEventListener('submit', function(e) {
-        e.preventDefault(); // Previne o envio padrão do formulário
+        e.preventDefault();
         
         // Coleta os dados do formulário
         const nome = document.getElementById('empresa').value.trim();
-        const telefone = document.getElementById('telefone').value.trim();
+        const telefoneFormatado = document.getElementById('telefone').value.trim();
+        const telefone = telefoneFormatado.replace(/\D/g, ''); // Remove formatação para validação
         
         // Coleta as checkboxes selecionadas
         const interesseSelecionado = [];
@@ -432,23 +433,28 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
+        if (telefone.length < 10) {
+            alert('Por favor, digite um telefone válido.');
+            return;
+        }
+        
         if (interesseSelecionado.length === 0) {
             alert('Por favor, selecione pelo menos uma área de interesse.');
             return;
         }
         
-        // Monta a mensagem para o WhatsApp
+        // Monta a mensagem para o WhatsApp (usa o telefone formatado)
         let mensagem = `*Solicitação de Contato - Dr. Hadady Wirla*\n\n`;
         mensagem += `*Nome:* ${nome}\n`;
-        mensagem += `*Telefone:* ${telefone}\n`;
+        mensagem += `*Telefone:* ${telefoneFormatado}\n`;
         mensagem += `*Área(s) de Interesse:* ${interesseSelecionado.join(', ')}\n\n`;
         mensagem += `Gostaria de agendar uma consulta. Aguardo o contato!`;
         
         // Codifica a mensagem para URL
         const mensagemCodificada = encodeURIComponent(mensagem);
         
-        // Número do WhatsApp (substitua pelo número real)
-        const numeroWhatsApp = '5541997250087'; // Formato: código do país + DDD + número
+        // Número do WhatsApp
+        const numeroWhatsApp = '5541997250087';
         
         // Cria o link do WhatsApp
         const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
@@ -459,6 +465,96 @@ document.addEventListener('DOMContentLoaded', function() {
         // Limpa o formulário após envio
         form.reset();
     });
+});
+</script>
+
+<script>
+// Máscara para telefone - versão corrigida
+document.getElementById('telefone').addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+    
+    // Limita a 11 dígitos
+    if (value.length > 11) {
+        value = value.substring(0, 11);
+    }
+    
+    // Aplica a máscara
+    if (value.length <= 10) {
+        // Formato: (00) 0000-0000
+        value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, function(match, p1, p2, p3) {
+            if (p3) return `(${p1}) ${p2}-${p3}`;
+            if (p2) return `(${p1}) ${p2}`;
+            if (p1) return `(${p1}`;
+            return value;
+        });
+    } else {
+        // Formato: (00) 00000-0000
+        value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, function(match, p1, p2, p3) {
+            if (p3) return `(${p1}) ${p2}-${p3}`;
+            if (p2) return `(${p1}) ${p2}`;
+            if (p1) return `(${p1}`;
+            return value;
+        });
+    }
+    
+    e.target.value = value;
+});
+
+// Permite backspace e delete funcionarem corretamente
+document.getElementById('telefone').addEventListener('keydown', function(e) {
+    // Permite teclas especiais: backspace, delete, tab, escape, enter, home, end, left, up, right, down
+    if ([8, 9, 27, 13, 46, 35, 36, 37, 38, 39, 40].indexOf(e.keyCode) !== -1 ||
+        // Permite Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+        (e.keyCode === 65 && e.ctrlKey === true) ||
+        (e.keyCode === 67 && e.ctrlKey === true) ||
+        (e.keyCode === 86 && e.ctrlKey === true) ||
+        (e.keyCode === 88 && e.ctrlKey === true)) {
+        return; // Deixa acontecer, não faz nada
+    }
+    
+    // Garante que é um número
+    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+        e.preventDefault();
+    }
+});
+
+// Tratamento especial para backspace
+document.getElementById('telefone').addEventListener('keyup', function(e) {
+    if (e.keyCode === 8) { // Backspace
+        let value = e.target.value.replace(/\D/g, '');
+        
+        // Reaplica a máscara após backspace
+        if (value.length <= 10) {
+            if (value.length >= 6) {
+                value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+            } else if (value.length >= 2) {
+                value = value.replace(/(\d{2})(\d{0,4})/, '($1) $2');
+            } else if (value.length >= 1) {
+                value = value.replace(/(\d{0,2})/, '($1');
+            }
+        } else {
+            value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+        }
+        
+        e.target.value = value;
+    }
+});
+
+// Remove formatação ao copiar/colar
+document.getElementById('telefone').addEventListener('paste', function(e) {
+    setTimeout(() => {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 11) {
+            value = value.substring(0, 11);
+        }
+        
+        if (value.length <= 10) {
+            value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+        } else {
+            value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+        }
+        e.target.value = value;
+    }, 10);
 });
 </script>
 

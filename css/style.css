@@ -533,8 +533,17 @@ a {
   font-size: 1.7rem;
 }
 
-.form-linha .form-row input[type="text"],
-.form-linha .form-row input[type="email"] {
+.form-linha .form-row input[type="text"]{
+  flex: 3;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 1rem;
+  color: black;
+}
+
+.form-row input[type="tel"]{
   flex: 3;
   padding: 10px;
   border: none;
