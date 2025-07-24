@@ -340,7 +340,7 @@ a {
 
 #trainer h2 {
     color: #084D6E;
-    margin-bottom: 50px;
+    margin-bottom: 14px;
     font-size: 32px;
     font-weight: 600;
     font-family: Poppins, sans-serif;
@@ -368,32 +368,57 @@ a {
 
 .simple-card h4 {
     color: #fff;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 600;
     margin-bottom: 15px;
 }
 
 .simple-card p {
     color: #fff;
-    font-size: 14px;
+    font-size: 20px;
     line-height: 1.5;
     margin: 0;
 }
 
-/* Responsividade */
+/* Animações SOMENTE para mobile - controle específico */
 @media (max-width: 768px) {
-    .simple-card {
-        margin-bottom: 20px;
-        padding: 25px 15px;
-        min-height: 140px;
+    /* Estado inicial - elementos invisíveis */
+    .wow {
+        visibility: visible !important;
+        opacity: 0 !important;
+        transform: translateY(50px) !important;
+        transition: none !important;
     }
     
-    .simple-card h4 {
-        font-size: 18px;
+    /* Estado animado - elementos visíveis */
+    .wow.mobile-animated {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        transition: all 0.4s ease-out !important;
     }
     
-    .simple-card p {
-        font-size: 13px;
+    /* Animação específica para bounceIn */
+    .wow.bounceIn {
+        transform: scale(0.3) !important;
+        opacity: 0 !important;
+    }
+    
+    .wow.bounceIn.mobile-animated {
+        transform: scale(1) !important;
+        opacity: 1 !important;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+    }
+    
+    /* Remove todas as animações CSS conflitantes no mobile */
+    .animated {
+        animation: none !important;
+    }
+}
+
+/* Desktop - mantém transições normais */
+@media (min-width: 769px) {
+    .wow {
+        transition: all 0.8s ease-out;
     }
 }
 
@@ -1053,5 +1078,7 @@ footer .copyright-text {
   }
 
 }
+
+
 
 
